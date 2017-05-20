@@ -52,7 +52,7 @@ raise Vagrant::Errors::VagrantError.new,
 Vagrant.configure("2") do |config|
   config.ssh.insert_key = false
 
-  config.vm.box = "opensuse/openSUSE-42.2-x86_64"
+  config.vm.box = "suse/SLE12SP3-x86_64"
 
   config.vm.provider "libvirt" do |lv|
     if settings.has_key?('libvirt_host') then
@@ -119,12 +119,9 @@ Vagrant.configure("2") do |config|
       cat /root/.ssh/id_rsa.pub >> /root/.ssh/authorized_keys
       hostname node1
 
-      zypper ar http://download.opensuse.org/repositories/filesystems:/ceph:/luminous/openSUSE_Leap_42.3/filesystems:ceph:luminous.repo
-      zypper ar http://download.opensuse.org/repositories/devel:languages:python/openSUSE_Leap_42.3/devel:languages:python.repo
-      zypper ar http://download.opensuse.org/repositories/home:/swiftgist/openSUSE_Leap_42.1/home:swiftgist.repo
-      zypper ar http://download.opensuse.org/repositories/home:/tserong/openSUSE_Factory/home:tserong.repo
-      zypper ar http://download.opensuse.org/repositories/home:/jfajerski/openSUSE_Leap_42.2/home:jfajerski.repo
-      zypper ar http://download.opensuse.org/repositories/filesystems:/ceph/openSUSE_Leap_42.3/filesystems:ceph.repo
+      zypper ar http://download.suse.de/ibs/SUSE:/SLE-12-SP3:/Update:/Products:/SES5/images/repo/SUSE-Enterprise-Storage-5-POOL-x86_64-Media1/ SES5_Media1
+      zypper ar http://download.suse.de/ibs/SUSE:/SLE-12-SP3:/Update:/Products:/Cloud8/standard/SUSE:SLE-12-SP3:Update:Products:Cloud8.repo
+      zypper ar http://download.suse.de/ibs/SUSE:/SLE-12-SP3:/Update/standard/SUSE:SLE-12-SP3:Update.repo
       zypper --gpg-auto-import-keys ref
 
       SuSEfirewall2 off
@@ -186,12 +183,9 @@ Vagrant.configure("2") do |config|
         ssh-keyscan -H node1 >> ~/.ssh/known_hosts
         ssh-keyscan -H node3 >> ~/.ssh/known_hosts
 
-        zypper ar http://download.opensuse.org/repositories/filesystems:/ceph:/luminous/openSUSE_Leap_42.3/filesystems:ceph:luminous.repo
-        zypper ar http://download.opensuse.org/repositories/devel:languages:python/openSUSE_Leap_42.3/devel:languages:python.repo
-        zypper ar http://download.opensuse.org/repositories/home:/swiftgist/openSUSE_Leap_42.1/home:swiftgist.repo
-        zypper ar http://download.opensuse.org/repositories/home:/tserong/openSUSE_Factory/home:tserong.repo
-        zypper ar http://download.opensuse.org/repositories/home:/jfajerski/openSUSE_Leap_42.2/home:jfajerski.repo
-        zypper ar http://download.opensuse.org/repositories/filesystems:/ceph/openSUSE_Leap_42.3/filesystems:ceph.repo
+        zypper ar http://download.suse.de/ibs/SUSE:/SLE-12-SP3:/Update:/Products:/SES5/images/repo/SUSE-Enterprise-Storage-5-POOL-x86_64-Media1/ SES5_Media1
+        zypper ar http://download.suse.de/ibs/SUSE:/SLE-12-SP3:/Update:/Products:/Cloud8/standard/SUSE:SLE-12-SP3:Update:Products:Cloud8.repo
+        zypper ar http://download.suse.de/ibs/SUSE:/SLE-12-SP3:/Update/standard/SUSE:SLE-12-SP3:Update.repo
         zypper --gpg-auto-import-keys ref
 
         SuSEfirewall2 off
@@ -253,12 +247,9 @@ Vagrant.configure("2") do |config|
         ssh-keyscan -H node1 >> ~/.ssh/known_hosts
         ssh-keyscan -H node2 >> ~/.ssh/known_hosts
 
-        zypper ar http://download.opensuse.org/repositories/filesystems:/ceph:/luminous/openSUSE_Leap_42.3/filesystems:ceph:luminous.repo
-        zypper ar http://download.opensuse.org/repositories/devel:languages:python/openSUSE_Leap_42.3/devel:languages:python.repo
-        zypper ar http://download.opensuse.org/repositories/home:/swiftgist/openSUSE_Leap_42.1/home:swiftgist.repo
-        zypper ar http://download.opensuse.org/repositories/home:/tserong/openSUSE_Factory/home:tserong.repo
-        zypper ar http://download.opensuse.org/repositories/home:/jfajerski/openSUSE_Leap_42.2/home:jfajerski.repo
-        zypper ar http://download.opensuse.org/repositories/filesystems:/ceph/openSUSE_Leap_42.3/filesystems:ceph.repo
+        zypper ar http://download.suse.de/ibs/SUSE:/SLE-12-SP3:/Update:/Products:/SES5/images/repo/SUSE-Enterprise-Storage-5-POOL-x86_64-Media1/ SES5_Media1
+        zypper ar http://download.suse.de/ibs/SUSE:/SLE-12-SP3:/Update:/Products:/Cloud8/standard/SUSE:SLE-12-SP3:Update:Products:Cloud8.repo
+        zypper ar http://download.suse.de/ibs/SUSE:/SLE-12-SP3:/Update/standard/SUSE:SLE-12-SP3:Update.repo
         zypper --gpg-auto-import-keys ref
         hostname node3
 
@@ -304,6 +295,8 @@ Vagrant.configure("2") do |config|
         ssh-keyscan -H node2 >> ~/.ssh/known_hosts
 
         zypper ar http://download.suse.de/ibs/SUSE:/SLE-12-SP3:/Update:/Products:/SES5/images/repo/SUSE-Enterprise-Storage-5-POOL-x86_64-Media1/ SES5_Media1
+        zypper ar http://download.suse.de/ibs/SUSE:/SLE-12-SP3:/Update:/Products:/Cloud8/standard/SUSE:SLE-12-SP3:Update:Products:Cloud8.repo
+        zypper ar http://download.suse.de/ibs/SUSE:/SLE-12-SP3:/Update/standard/SUSE:SLE-12-SP3:Update.repo
         zypper --gpg-auto-import-keys ref
         hostname openattic
 
@@ -380,16 +373,13 @@ Vagrant.configure("2") do |config|
       chmod 644 bin/*.py
       chmod 755 bin/*.sh
 
-      zypper ar http://download.opensuse.org/repositories/filesystems:/ceph:/luminous/openSUSE_Leap_42.3/filesystems:ceph:luminous.repo
-      zypper ar http://download.opensuse.org/repositories/devel:languages:python/openSUSE_Leap_42.3/devel:languages:python.repo
-      zypper ar http://download.opensuse.org/repositories/home:/swiftgist/openSUSE_Leap_42.1/home:swiftgist.repo
-      zypper ar http://download.opensuse.org/repositories/home:/tserong/openSUSE_Factory/home:tserong.repo
-      zypper ar http://download.opensuse.org/repositories/home:/jfajerski/openSUSE_Leap_42.2/home:jfajerski.repo
-      zypper ar http://download.opensuse.org/repositories/filesystems:/ceph/openSUSE_Leap_42.3/filesystems:ceph.repo
+      zypper ar http://download.suse.de/ibs/SUSE:/SLE-12-SP3:/Update:/Products:/SES5/images/repo/SUSE-Enterprise-Storage-5-POOL-x86_64-Media1/ SES5_Media1
+      zypper ar http://download.suse.de/ibs/SUSE:/SLE-12-SP3:/Update:/Products:/Cloud8/standard/SUSE:SLE-12-SP3:Update:Products:Cloud8.repo
+      zypper ar http://download.suse.de/ibs/SUSE:/SLE-12-SP3:/Update/standard/SUSE:SLE-12-SP3:Update.repo
       zypper --gpg-auto-import-keys ref
-      zypper ar https://yum.dockerproject.org/repo/main/opensuse/13.2/ docker-main
+      zypper ar http://download.suse.de/ibs/Devel:/Docker/SUSE_SLE-12-SP2_GA_standard docker-main
       zypper --no-gpg-checks ref
-      zypper -n --no-gpg-checks install docker-engine
+      zypper -n --no-gpg-checks install docker
       zypper rr docker-main
 
       systemctl enable docker
@@ -446,6 +436,7 @@ EOF
         cp /srv/salt/ceph/updates/default_my.sls /srv/salt/ceph/time
         sed -i 's/default/default_my/g' /srv/salt/ceph/time/init.sls
 
+        sed -i 's/#worker_threads: 5/worker_threads: 10/g' /etc/salt/master
         chown -R salt:salt /srv/pillar
         systemctl restart salt-master
         sleep 10
