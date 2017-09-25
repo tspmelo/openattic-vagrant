@@ -124,6 +124,11 @@ Vagrant.configure("2") do |config|
       zypper ar http://download.suse.de/ibs/SUSE:/SLE-12-SP3:/Update/standard/SUSE:SLE-12-SP3:Update.repo
       zypper --gpg-auto-import-keys ref
 
+      zypper ar http://download.opensuse.org/repositories/openSUSE:/infrastructure/SLE_12_SP3/ FixJson
+      zypper --gpg-auto-import-keys ref
+      zypper --non-interactive in python-simplejson-3.8.2-2.1.x86_64
+      zypper rr FixJson
+
       SuSEfirewall2 off
 
       zypper -n install ntp
@@ -187,6 +192,11 @@ Vagrant.configure("2") do |config|
         zypper ar http://download.suse.de/ibs/SUSE:/SLE-12-SP3:/Update:/Products:/Cloud8/standard/SUSE:SLE-12-SP3:Update:Products:Cloud8.repo
         zypper ar http://download.suse.de/ibs/SUSE:/SLE-12-SP3:/Update/standard/SUSE:SLE-12-SP3:Update.repo
         zypper --gpg-auto-import-keys ref
+
+        zypper ar http://download.opensuse.org/repositories/openSUSE:/infrastructure/SLE_12_SP3/ FixJson
+        zypper --gpg-auto-import-keys ref
+        zypper --non-interactive in python-simplejson-3.8.2-2.1.x86_64
+        zypper rr FixJson
 
         SuSEfirewall2 off
 
@@ -253,6 +263,11 @@ Vagrant.configure("2") do |config|
         zypper --gpg-auto-import-keys ref
         hostname node3
 
+        zypper ar http://download.opensuse.org/repositories/openSUSE:/infrastructure/SLE_12_SP3/ FixJson
+        zypper --gpg-auto-import-keys ref
+        zypper --non-interactive in python-simplejson-3.8.2-2.1.x86_64
+        zypper rr FixJson
+
         SuSEfirewall2 off
 
         zypper -n install ntp
@@ -299,6 +314,11 @@ Vagrant.configure("2") do |config|
         zypper ar http://download.suse.de/ibs/SUSE:/SLE-12-SP3:/Update/standard/SUSE:SLE-12-SP3:Update.repo
         zypper --gpg-auto-import-keys ref
         hostname openattic
+
+        zypper ar http://download.opensuse.org/repositories/openSUSE:/infrastructure/SLE_12_SP3/ FixJson
+        zypper --gpg-auto-import-keys ref
+        zypper --non-interactive in python-simplejson-3.8.2-2.1.x86_64
+        zypper rr FixJson
 
         SuSEfirewall2 off
 
@@ -381,6 +401,11 @@ Vagrant.configure("2") do |config|
       zypper --no-gpg-checks ref
       zypper -n --no-gpg-checks install docker
       zypper rr docker-main
+
+      zypper ar http://download.opensuse.org/repositories/openSUSE:/infrastructure/SLE_12_SP3/ FixJson
+      zypper --gpg-auto-import-keys ref
+      zypper --non-interactive in python-simplejson-3.8.2-2.1.x86_64
+      zypper rr FixJson
 
       systemctl enable docker
       systemctl restart docker
